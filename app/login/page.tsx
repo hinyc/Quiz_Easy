@@ -3,6 +3,8 @@ import { LoginPageStyle } from './page.style';
 import CustomRouter from '../../components/customRouter';
 
 export default function LoginPage() {
+  console.log('test');
+  console.log('qqq', process.env.NODE_ENV);
   return (
     <>
       <div>
