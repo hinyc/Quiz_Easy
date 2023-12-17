@@ -21,6 +21,13 @@ $ npm install next-auth
 $ npm i --save lodash
 $ npm install ioredis
 $ npm install --save-dev @types/node
+
+//pwa
+$npm install next-pwa
+$npm install --save next-compose-plugins
+
+//styled/macro
+$npm install --save-dev babel-plugin-macros
 ```
 
 # flow

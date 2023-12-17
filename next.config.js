@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
-
 const prod = process.env.NODE_ENV === 'production';
 
+const { withPlugins } = require('next-compose-plugins');
 const runtimeCaching = require('next-pwa/cache');
+//PWA
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -12,7 +13,8 @@ const withPWA = require('next-pwa')({
   disable: true,
 });
 
-const nextConfig = withPWA({
-  // next config
+const nextConfig = withPlugins([withPWA], {
+  //next config
+  reactStrictMode: true,
 });
 module.exports = nextConfig;
