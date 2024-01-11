@@ -6,7 +6,6 @@ import React from 'react';
 export default function LoadingIndicator() {
   return (
     <LoadingIndicatorStyle>
-      {' '}
       <div className="area">
         <div className="rect1 item"></div>
         <div className="rect2 item"></div>
@@ -27,8 +26,8 @@ const changeScale = keyframes`
 `;
 
 const LoadingIndicatorStyle = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 40px;
+  height: 50px;
   margin: 20px auto;
   position: relative;
   .area {
@@ -38,7 +37,7 @@ const LoadingIndicatorStyle = styled.div`
     top: calc(50% - 25px);
     left: calc(50% - 20px);
     .item {
-      background-color: blue;
+      background-color: #f6f135;
       height: 100%;
       width: 6px;
       float: left;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { LoginPageStyle } from './page.style';
 import CustomRouter from '../../components/customRouter';
+import GoogleLoginButton from './_component/GoogleLoginButton';
+import Splash from './_component/Splash';
 
 export default function LoginPage() {
   console.log('test');
@@ -13,6 +15,8 @@ export default function LoginPage() {
       <div>
         <CustomRouter href="/">home</CustomRouter>
       </div>
+      <GoogleLoginButton />
+      <Splash />
     </>
   );
 }
