@@ -14,11 +14,11 @@ export default function Nav() {
 }
 
 const NavButtonList = [
-  { icon: '/assets/images/feature_miner.png', name: 'Quiz Hub', link: 'hub' },
-  { icon: '/assets/images/feature_miner.png', name: 'Honey Crown', link: 'crown' },
-  { icon: '/assets/images/feature_miner.png', name: 'Bee Hive', link: 'hive' },
-  { icon: '/assets/images/feature_miner.png', name: 'HC EX', link: 'exchange' },
-  { icon: '/assets/images/feature_miner.png', name: 'Setting', link: 'setting' },
+  { icon: '/assets/images/feature_miner.png', name: 'Quiz Hub', link: '/quiz-bee/hub' },
+  { icon: '/assets/images/feature_miner.png', name: 'Honey Crown', link: '/quiz-bee/crown' },
+  { icon: '/assets/images/feature_miner.png', name: 'Bee Hive', link: '/quiz-bee/hive' },
+  { icon: '/assets/images/feature_miner.png', name: 'HC EX', link: '/quiz-bee/exchange' },
+  { icon: '/assets/images/feature_miner.png', name: 'Setting', link: '/quiz-bee/setting' },
 ];
 
 export const NavStyled = styled.div`
@@ -28,5 +28,6 @@ export const NavStyled = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: blue;
+  background-color: purple;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 `;

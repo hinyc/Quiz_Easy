@@ -1,12 +1,32 @@
 'use client';
+import LoadingIndicator from '@/components/loadingIndicator';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
-import LoadingIndicator from '../../../components/loadingIndicator';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
-export default function Splash() {
+interface SplashProps {
+  localSession?: any;
+}
+export default function Splash({ localSession }: SplashProps) {
+  const { status } = useSession(localSession ?? null);
+  const router = useRouter();
+
+  // 세션 정보가 존재하는 경우 useSession() 함수에 전달합니다.
+  // if (storedSession) {
+  //   const session = JSON.parse(storedSession);
+  //   useSession(session);
+  // }
   //loading 상태 관리 필요
-
+  //스플레쉬 화면 보이는동안 세션체크 하고 로그인 되어있으면 메인페이지로 이동
+  useEffect(() => {
+    if (status === 'authenticated') {
+      setTimeout(() => {
+        router.push('/quiz-bee/hive');
+      }, 1000);
+    }
+  }, [status]);
   return (
     <SplashStyle>
       <LoadingIndicator />
@@ -32,6 +52,8 @@ const fadeOut = keyframes`
 
 const SplashStyle = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: #fff;

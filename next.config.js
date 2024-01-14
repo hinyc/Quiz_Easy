@@ -16,5 +16,6 @@ const withPWA = require('next-pwa')({
 const nextConfig = withPlugins([withPWA], {
   //next config
   reactStrictMode: true,
+  // swcMinify: true,
 });
 module.exports = nextConfig;

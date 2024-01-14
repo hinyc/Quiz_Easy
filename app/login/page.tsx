@@ -1,22 +1,25 @@
-import React from 'react';
+'use client';
+import React, { use, useEffect, useState } from 'react';
 import { LoginPageStyle } from './page.style';
-import CustomRouter from '../../components/customRouter';
 import GoogleLoginButton from './_component/GoogleLoginButton';
 import Splash from './_component/Splash';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  console.log('test');
-  console.log('qqq', process.env.NODE_ENV);
+  const storedSession = typeof window !== 'undefined' ? localStorage.getItem('session') : null;
+
+  const { status } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/quiz-bee/hive');
+    }
+  }, [status]);
   return (
-    <>
-      <div>
-        <LoginPageStyle>LoginPage</LoginPageStyle>
-      </div>
-      <div>
-        <CustomRouter href="/">home</CustomRouter>
-      </div>
+    <LoginPageStyle>
+      <Splash localSession={storedSession} />
       <GoogleLoginButton />
-      <Splash />
-    </>
+    </LoginPageStyle>
   );
 }

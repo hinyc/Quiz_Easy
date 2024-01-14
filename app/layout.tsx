@@ -3,18 +3,20 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { LayoutStyled } from './layout.style';
 import Nav from '../components/layout/nav';
+import NextAuthProvider from './NextAuthProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <LayoutStyled>
-          sdf
-          {children}
-          <Nav />
-        </LayoutStyled>
+      <body>
+        <NextAuthProvider>
+          <LayoutStyled>
+            {children}
+            {/* <Nav /> */}
+          </LayoutStyled>
+        </NextAuthProvider>
       </body>
     </html>
   );
