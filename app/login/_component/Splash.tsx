@@ -1,10 +1,11 @@
 'use client';
+import { LINK } from '@/app/common/link';
 import LoadingIndicator from '@/components/loadingIndicator';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 interface SplashProps {
   localSession?: any;
@@ -23,7 +24,7 @@ export default function Splash({ localSession }: SplashProps) {
   useEffect(() => {
     if (status === 'authenticated') {
       setTimeout(() => {
-        router.push('/quiz-bee/hive');
+        router.push(LINK.beeHive);
       }, 1000);
     }
   }, [status]);

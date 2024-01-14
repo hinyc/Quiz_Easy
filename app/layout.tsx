@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { LayoutStyled } from './layout.style';
-import Nav from '../components/layout/nav';
 import NextAuthProvider from './NextAuthProvider';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -12,10 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <NextAuthProvider>
-          <LayoutStyled>
-            {children}
-            {/* <Nav /> */}
-          </LayoutStyled>
+          <LayoutStyled>{children}</LayoutStyled>
         </NextAuthProvider>
       </body>
     </html>
