@@ -4,7 +4,7 @@ import LoadingIndicator from '../components/loadingIndicator';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { LINK } from './common/link';
+import { ROUTE } from './common/link';
 
 export default function Home() {
   //로그인 시 hive로 이동
@@ -15,7 +15,7 @@ export default function Home() {
   const router = useRouter();
   useEffect(() => {
     if (status === 'authenticated') {
-      router.push(LINK.beeHive);
+      router.push(ROUTE.beeHive);
     }
     if (status === 'unauthenticated') {
       // 기타 스토리지 초기화

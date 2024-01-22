@@ -1,5 +1,5 @@
 'use client';
-import { LINK } from '@/app/common/link';
+import { ROUTE } from '@/app/common/link';
 import LoadingIndicator from '@/components/loadingIndicator';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -24,7 +24,7 @@ export default function Splash({ localSession }: SplashProps) {
   useEffect(() => {
     if (status === 'authenticated') {
       setTimeout(() => {
-        router.push(LINK.beeHive);
+        router.push(ROUTE.beeHive);
       }, 1000);
     }
   }, [status]);

@@ -1,4 +1,4 @@
-export const LINK = {
+export const ROUTE = {
   login: '/login',
   beeHive: '/quiz-bee/hive',
   quizHub: '/quiz-bee/hub',

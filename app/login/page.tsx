@@ -5,7 +5,7 @@ import GoogleLoginButton from './_component/GoogleLoginButton';
 import Splash from './_component/Splash';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { LINK } from '../common/link';
+import { ROUTE } from '../common/link';
 
 export default function LoginPage() {
   const storedSession = typeof window !== 'undefined' ? localStorage.getItem('session') : null;
@@ -14,7 +14,7 @@ export default function LoginPage() {
   const router = useRouter();
   useEffect(() => {
     if (status === 'authenticated') {
-      router.push(LINK.beeHive);
+      router.push(ROUTE.beeHive);
     }
   }, [status]);
   return (
