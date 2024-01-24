@@ -16,7 +16,7 @@ export default function LoginPage() {
     if (status === 'authenticated') {
       router.push(ROUTE.beeHive);
     }
-  }, [status]);
+  }, [router, status]);
   return (
     <LoginPageStyle>
       <Splash localSession={storedSession} />

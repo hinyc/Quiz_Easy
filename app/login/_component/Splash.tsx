@@ -27,7 +27,7 @@ export default function Splash({ localSession }: SplashProps) {
         router.push(ROUTE.beeHive);
       }, 1000);
     }
-  }, [status]);
+  }, [router, status]);
   return (
     <SplashStyle>
       <LoadingIndicator />

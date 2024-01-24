@@ -195,19 +195,3 @@ export const authOption: AuthOptions = {
 export const auth = async (req: any, res: any) => {
   return await NextAuth(req, res, authOption);
 };
-
-declare global {
-  namespace NodeJS {
-    export interface ProcessEnv {
-      NEXT_PUBLIC_GOOGLE_CLIENT_ID: string;
-      NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: string;
-
-      //example
-      NEXTAUTH_SECRET: string;
-      AUTH_APPLE_ID: string;
-      AUTH_APPLE_SECRET: string;
-      AUTH_GOOGLE_ID: string;
-      AUTH_GOOGLE_SECRET: string;
-    }
-  }
-}

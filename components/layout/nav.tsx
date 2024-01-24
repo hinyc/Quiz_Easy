@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styled from '@emotion/styled';
-import NavButton from './navButton';
+import NavButton from './Nav.Button';
 import { ROUTE } from '@/app/common/link';
 
 export default function Nav() {
@@ -23,6 +23,7 @@ const NavButtonList = [
 ];
 
 export const NavStyled = styled.div`
+  margin-top: 12px;
   width: 100%;
   padding: 16px;
   display: flex;

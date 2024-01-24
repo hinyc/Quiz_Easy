@@ -19,8 +19,10 @@ export default function Home() {
     }
     if (status === 'unauthenticated') {
       // 기타 스토리지 초기화
+      // 로그인 페이지로 이동
+      router.push(ROUTE.login);
     }
-  }, [status]);
+  }, [router, status]);
 
   return (
     <HomeStyle>
