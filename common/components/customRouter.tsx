@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import styled from '@emotion/styled';
 
 import React from 'react';
-import { RouterType } from '../type';
+import { RouterType } from '../../type';
 
 interface RouterProps {
   children: React.ReactNode;

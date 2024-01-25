@@ -2,9 +2,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useSession } from 'next-auth/react';
+import { BoxShadow } from '@/common/CommonStyle';
+import { COLOR } from '@/common/constant/color';
 
 export default function Header() {
   const { data: session } = useSession();
+
   return (
     <HeaderContainer>
       <div className="class">lv.1</div>
@@ -30,10 +33,21 @@ const HeaderContainer = styled.div`
     line-height: 24px;
     font-weight: 700;
     border-radius: 4px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    ${BoxShadow}
   }
 
   .nickname {
-    border-bottom: 1px solid yellowgreen;
+    position: relative;
+    ::after {
+      content: '';
+      height: 8px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: ${COLOR.gold};
+      opacity: 0.5;
+      z-index: -1;
+    }
   }
 `;

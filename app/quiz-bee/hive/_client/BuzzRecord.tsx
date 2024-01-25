@@ -1,5 +1,6 @@
 'use client';
-import { COLOR } from '@/constant/color';
+import { BoxShadow } from '@/common/CommonStyle';
+import { COLOR } from '@/common/constant/color';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -21,9 +22,7 @@ export default function BuzzRecord() {
           </div>
         </div>
       </div>
-      <div className="img__box">
-        <img src="" alt="" />
-      </div>
+      <div className="img__box"></div>
       {/* 화면 가로가 커지면 가려진 그림이 길어지도록 하자 */}
     </InfoBoxStyle>
   );
@@ -32,9 +31,9 @@ export default function BuzzRecord() {
 const InfoBoxStyle = styled.div`
   padding: 12px;
   border-radius: 12px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
   margin-bottom: 12px;
   display: flex;
+  ${BoxShadow}
 
   .info__box {
     /* background-color: pink; */
@@ -63,10 +62,5 @@ const InfoBoxStyle = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    img {
-      background-color: yellow;
-      width: 100%;
-      height: 100%;
-    }
   }
 `;

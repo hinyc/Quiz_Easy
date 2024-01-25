@@ -1,6 +1,6 @@
 'use client';
 import styled from '@emotion/styled';
-import LoadingIndicator from '../components/loadingIndicator';
+import LoadingIndicator from '../common/components/loadingIndicator';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';

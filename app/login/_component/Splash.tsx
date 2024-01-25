@@ -1,6 +1,6 @@
 'use client';
 import { ROUTE } from '@/app/common/link';
-import LoadingIndicator from '@/components/loadingIndicator';
+import LoadingIndicator from '@/common/components/loadingIndicator';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useSession } from 'next-auth/react';
