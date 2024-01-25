@@ -29,7 +29,7 @@ type NavButtonStyledProps = {
 const NavButtonStyled = styled.div<NavButtonStyledProps>`
   position: relative;
   width: 60px;
-  height: 60px;
+  height: 40px;
   background-image: url(${(props) => props.bgUrl});
   background-size: cover;
   background-repeat: no-repeat;

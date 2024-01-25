@@ -3,7 +3,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import NavButton from './Nav.Button';
 import { ROUTE } from '@/app/common/link';
+import { MinMaxWidth } from '@/common/CommonStyle';
 
+/**
+ * @height 60px
+ */
 export default function Nav() {
   return (
     <NavStyled>
@@ -23,13 +27,18 @@ const NavButtonList = [
 ];
 
 export const NavStyled = styled.div`
-  margin-top: 12px;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  padding: 16px;
+  height: 60px;
+  padding: 0 16px;
   display: flex;
+  margin: 0 auto;
+
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   background-color: purple;
   background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  ${MinMaxWidth}
 `;

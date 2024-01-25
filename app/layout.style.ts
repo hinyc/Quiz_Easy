@@ -1,4 +1,5 @@
 'use client';
+import { MinMaxWidth } from '@/common/CommonStyle';
 import styled from '@emotion/styled';
 
 export const LayoutStyled = styled.div`
@@ -7,10 +8,8 @@ export const LayoutStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  min-height: 500px;
-  min-width: 360px;
-  max-width: 760px;
   margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.01), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  ${MinMaxWidth}
 `;

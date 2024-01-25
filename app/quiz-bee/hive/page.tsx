@@ -32,7 +32,6 @@ export default function HivePage() {
 const HivePageStyle = styled.div`
   width: 100%;
   height: 100%;
-  padding: 12px;
 `;
 
 // navigation 은 홈에서만 보이도록 할까 ?

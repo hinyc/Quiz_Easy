@@ -2,9 +2,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useSession } from 'next-auth/react';
-import { BoxShadow } from '@/common/CommonStyle';
+import { BoxShadow, MinMaxWidth } from '@/common/CommonStyle';
 import { COLOR } from '@/common/constant/color';
 
+/**
+ * @height 90px
+ */
 export default function Header() {
   const { data: session } = useSession();
 
@@ -17,15 +20,16 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-  margin: 16px 0;
-  padding-left: 12px;
-  padding-bottom: 6px;
+  position: fixed;
+  top: 0;
+  margin: 0 auto;
+  padding: 40px 12px 20px;
   width: 100%;
   display: flex;
   align-items: flex-end;
-  height: 40px;
+  height: 90px;
   font-size: 16px;
-
+  ${MinMaxWidth}
   .class {
     margin-right: 12px;
     padding: 3px 12px 0;

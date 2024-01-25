@@ -7,18 +7,18 @@ import React from 'react';
 export default function BuzzRecord() {
   return (
     <InfoBoxStyle>
+      <h2>Buzz Records</h2>
       <div className="info__box">
-        <h2>Buzz Records</h2>
         <div>
           <div className="name">
-            <div>QuizTally</div>
-            <div>Buzz Rank</div>
-            <div>Honey Comb</div>
+            <h4>QuizTally</h4>
+            <h4>Buzz Rank</h4>
+            <h4>Honey Comb</h4>
           </div>
           <div className="value">
-            <div>25 / 121 ( 76% )</div>
-            <div> 992</div>
-            <div>112,353</div>
+            <span>25 / 121 ( 76% )</span>
+            <span> 992</span>
+            <span>112,353</span>
           </div>
         </div>
       </div>
@@ -31,13 +31,14 @@ export default function BuzzRecord() {
 const InfoBoxStyle = styled.div`
   padding: 12px;
   border-radius: 12px;
-  margin-bottom: 12px;
-  display: flex;
+  margin-bottom: 24px;
+  width: 100%;
   ${BoxShadow}
 
   .info__box {
-    /* background-color: pink; */
+    margin: 0 auto;
     min-width: 250px;
+    max-width: 450px;
     h2 {
       margin-bottom: 8px;
     }
@@ -55,6 +56,7 @@ const InfoBoxStyle = styled.div`
         flex-direction: column;
         justify-content: space-between;
         gap: 4px;
+        font-size: 20px;
       }
     }
   }
