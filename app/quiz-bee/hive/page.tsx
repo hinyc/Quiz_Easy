@@ -4,6 +4,7 @@ import { signOut, useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import BeelingQuiz from './_client/BeelingQuiz';
 import BuzzRecord from './_client/BuzzRecord';
+import RankSwiper from './_client/RankSwiper';
 
 export default function HivePage() {
   const session = useSession();
@@ -13,18 +14,12 @@ export default function HivePage() {
     }
   }, [session]);
 
-  const _onClickSignOut = () => {
-    localStorage.removeItem('session');
-    signOut({ callbackUrl: '/login' });
-  };
-
   return (
     <HivePageStyle>
+      {/* //layout으로 뺄까 ?..ㄱ */}
+      <RankSwiper />
       <BuzzRecord />
       <BeelingQuiz />
-      {/*  */}
-      HivePage
-      <button onClick={_onClickSignOut}>signOut</button>
     </HivePageStyle>
   );
 }
@@ -32,6 +27,9 @@ export default function HivePage() {
 const HivePageStyle = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 // navigation 은 홈에서만 보이도록 할까 ?

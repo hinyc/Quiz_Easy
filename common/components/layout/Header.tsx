@@ -20,9 +20,6 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-  position: fixed;
-  top: 0;
-  margin: 0 auto;
   padding: 40px 12px 20px;
   width: 100%;
   display: flex;

@@ -22,13 +22,11 @@ const NavButtonList = [
   { icon: '/assets/images/feature_miner.png', name: 'Quiz Hub', link: ROUTE.quizHub },
   { icon: '/assets/images/feature_miner.png', name: 'Honey Crown', link: ROUTE.honeyCrown },
   { icon: '/assets/images/feature_miner.png', name: 'Bee Hive', link: ROUTE.beeHive },
-  { icon: '/assets/images/feature_miner.png', name: 'HC EX', link: ROUTE.exchange },
+  // { icon: '/assets/images/feature_miner.png', name: 'HC EX', link: ROUTE.exchange },
   { icon: '/assets/images/feature_miner.png', name: 'Setting', link: ROUTE.setting },
 ];
 
 export const NavStyled = styled.div`
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 60px;
   padding: 0 16px;

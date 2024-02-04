@@ -22,8 +22,6 @@ export default function BuzzRecord() {
           </div>
         </div>
       </div>
-      <div className="img__box"></div>
-      {/* 화면 가로가 커지면 가려진 그림이 길어지도록 하자 */}
     </InfoBoxStyle>
   );
 }
@@ -33,6 +31,7 @@ const InfoBoxStyle = styled.div`
   border-radius: 12px;
   margin-bottom: 24px;
   width: 100%;
+  height: 150px;
   ${BoxShadow}
 
   .info__box {
@@ -59,10 +58,5 @@ const InfoBoxStyle = styled.div`
         font-size: 20px;
       }
     }
-  }
-  .img__box {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
   }
 `;

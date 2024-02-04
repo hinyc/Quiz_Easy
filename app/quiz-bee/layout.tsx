@@ -17,9 +17,10 @@ export default function QuizBeeLayout({ children }: { children: React.ReactNode 
 
 const QuizBeeLayoutStyle = styled.div`
   width: 100%;
+  height: 100%;
   .children {
-    margin-top: 90px;
     padding: 16px;
     height: calc(100vh - 150px);
+    overflow-y: auto;
   }
 `;
