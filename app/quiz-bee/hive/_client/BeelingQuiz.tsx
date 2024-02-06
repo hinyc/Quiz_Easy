@@ -3,39 +3,70 @@ import { BoxShadow } from '@/common/CommonStyle';
 import { COLOR } from '@/common/constant/color';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
-import ClearModal from './ClearModal';
+import React, { useEffect, useState } from 'react';
+import ClearModal, { ClearModalShowTime } from './BeelingQuiz.ClearModal';
+import AllClearModal from './BeelingQuiz.AllClearModal';
 
 export default function BeelingQuiz() {
   const [round, setRound] = useState(0);
   const [submittedAnswer, setSubmittedAnswer] = useState<string | null>(null);
-  const [showClear, setShowClear] = useState(false);
+  const [showClearModal, setShowClearModal] = useState(false);
+  const [showAllClearModal, setShowAllClearModal] = useState(false);
+  const [targetTimeoutList, setTargetTimeoutList] = useState<NodeJS.Timeout[]>([]);
 
+  //todo 모달이 열리면 자동으로 타임아웃 시작되고 닫히로록 해보자
+  //timeout들은 상위 스토에서 관리 하자
+
+  //timeout clear 필요
+  //todo timeout 관리 블로그 쓰자
   const _onClickAnswer = (value: string) => {
     setSubmittedAnswer(null);
-    if (quiz[round].Answer === value) {
-      console.log('정답');
-      if (round === quiz.length - 1) {
-        alert('퀴즈 끝 더풀고싶으며 광고보세요 ^^');
-        return;
-      }
+    const newTargetTimeoutList: NodeJS.Timeout[] = [];
 
-      setShowClear(true);
-      setTimeout(() => {
-        setShowClear(false);
-        setRound(round + 1);
-      }, 500);
-    } else {
+    //정답일때
+    if (quiz[round].Answer === value) {
+      setShowClearModal(true);
+
+      newTargetTimeoutList.push(
+        setTimeout(() => {
+          setShowClearModal(false);
+
+          if (round === quiz.length - 1) {
+            //마지막 라운드 정답시
+            // alert('퀴즈 끝 더풀고싶으며 광고보세요 ^^');
+            setShowAllClearModal(true);
+            // setRound(0);
+            return;
+          }
+          setRound(round + 1);
+        }, ClearModalShowTime)
+      );
+    }
+
+    newTargetTimeoutList.push(
+      //실행지연용
       setTimeout(() => {
         setSubmittedAnswer(value);
-      });
-    }
+      })
+    );
+
+    //중복제거
+    const uniqueTargetTimeoutList = Array.from(new Set(newTargetTimeoutList));
+    setTargetTimeoutList(uniqueTargetTimeoutList);
   };
+
+  useEffect(() => {
+    return () => {
+      targetTimeoutList.forEach((timeout) => clearTimeout(timeout));
+    };
+  }, [targetTimeoutList]);
 
   return (
     <BeelingQuizStyle>
       <h2>BelingQuiz</h2>
-      <div className="round">1/{quiz.length}</div>
+      <div className="round">
+        {round + 1}/{quiz.length}
+      </div>
       <div className="quiz__box">
         <p>
           <span>Q.</span> {quiz[round].Quiz}
@@ -43,12 +74,17 @@ export default function BeelingQuiz() {
       </div>
       <div className="answer__box">
         {quiz[round].type === 'multiple' &&
-          quiz[round].Options!.map((option, index) => (
+          quiz[round].Options!.map((option, index) =>
             //button은 2줄까지 허용, 높이 고정
-            <button key={index} className={`${option === submittedAnswer && option !== quiz[round].Answer ? 'error' : null}`} onClick={() => _onClickAnswer(option)}>
-              {option}
-            </button>
-          ))}
+            {
+              const className = `${option === submittedAnswer ? (option !== quiz[round].Answer ? 'error' : 'clear') : null}`;
+              return (
+                <button key={index} className={className} onClick={() => _onClickAnswer(option)}>
+                  {option}
+                </button>
+              );
+            }
+          )}
 
         {quiz[round].type === 'objective' && <button onClick={() => _onClickAnswer(quiz[round].Answer)}>제출</button>}
 
@@ -59,7 +95,8 @@ export default function BeelingQuiz() {
           </>
         )}
       </div>
-      {showClear && <ClearModal />}
+      {showClearModal && <ClearModal />}
+      {showAllClearModal && <AllClearModal />}
     </BeelingQuizStyle>
   );
 }
@@ -142,10 +179,7 @@ const BeelingQuizStyle = styled.div`
       background-color: ${COLOR.green};
       transition: 0.2s;
       ${BoxShadow}
-      :hover {
-        cursor: pointer;
-        background-color: ${COLOR.gold}aa;
-      }
+
       :active {
         transform: scale(0.96);
       }
@@ -155,6 +189,9 @@ const BeelingQuizStyle = styled.div`
       &.error {
         background-color: ${COLOR.red};
         animation: ${shake} 0.4s;
+      }
+      &.clear {
+        background-color: ${COLOR.gold};
       }
     }
   }
