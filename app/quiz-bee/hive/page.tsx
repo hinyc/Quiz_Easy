@@ -30,6 +30,7 @@ const HivePageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
 `;
 
 // navigation 은 홈에서만 보이도록 할까 ?

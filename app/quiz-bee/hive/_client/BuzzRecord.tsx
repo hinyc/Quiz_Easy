@@ -29,7 +29,7 @@ export default function BuzzRecord() {
 const InfoBoxStyle = styled.div`
   padding: 12px;
   border-radius: 12px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
   width: 100%;
   height: 150px;
   ${BoxShadow}
