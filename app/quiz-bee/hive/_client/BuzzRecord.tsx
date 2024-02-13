@@ -7,7 +7,7 @@ import React from 'react';
 export default function BuzzRecord() {
   return (
     <InfoBoxStyle>
-      <h2>Buzz Records</h2>
+      {/* <h2>Buzz Records</h2> */}
       <div className="info__box">
         <div>
           <div className="name">

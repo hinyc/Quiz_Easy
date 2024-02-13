@@ -6,14 +6,16 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import ClearModal, { ClearModalShowTime } from './BeelingQuiz.ClearModal';
 import AllClearModal from './BeelingQuiz.AllClearModal';
+import { StoreHive } from '../_store';
 
 export default function BeelingQuiz() {
   const [round, setRound] = useState(0);
   const [submittedAnswer, setSubmittedAnswer] = useState<string | null>(null);
   const [showClearModal, setShowClearModal] = useState(false);
-  const [showAllClearModal, setShowAllClearModal] = useState(false);
+
   const [targetTimeoutList, setTargetTimeoutList] = useState<NodeJS.Timeout[]>([]);
 
+  const { showAllClearModal, setShowAllClearModal } = StoreHive();
   //todo 모달이 열리면 자동으로 타임아웃 시작되고 닫히로록 해보자
   //timeout들은 상위 스토에서 관리 하자
 

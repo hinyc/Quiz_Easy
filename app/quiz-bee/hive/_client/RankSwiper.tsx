@@ -54,9 +54,8 @@ const upSlide = keyframes`
 
 const RankSwiperStyle = styled.div<{ rank: number }>`
   width: 100%;
-  /* background-color: pink; */
-  height: 45px;
-  /* padding: 10px; */
+  min-height: 45px;
+  max-height: 45px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -94,6 +93,7 @@ type RankerList = {
   score: number;
 }[];
 
+//todo lv 필요 ?
 const rankers: RankerList = [
   { id: '1', name: 'John', score: 100 },
   { id: '2', name: 'Jane', score: 90 },
