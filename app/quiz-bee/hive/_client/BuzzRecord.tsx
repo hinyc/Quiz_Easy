@@ -27,15 +27,19 @@ export default function BuzzRecord() {
 }
 
 const InfoBoxStyle = styled.div`
+  max-height: 105px;
+  min-height: 105px;
   padding: 12px;
   border-radius: 12px;
-  /* margin-bottom: 24px; */
   width: 100%;
-  height: 150px;
   ${BoxShadow}
 
   .info__box {
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     min-width: 250px;
     max-width: 450px;
     h2 {

@@ -70,32 +70,32 @@ export default function BeelingQuiz() {
         {round + 1}/{quiz.length}
       </div>
       <div className="quiz__box">
-        <p>
+        <div className="question">
           <span>Q.</span> {quiz[round].Quiz}
-        </p>
-      </div>
-      <div className="answer__box">
-        {quiz[round].type === 'multiple' &&
-          quiz[round].Options!.map((option, index) =>
-            //button은 2줄까지 허용, 높이 고정
-            {
-              const className = `${option === submittedAnswer ? (option !== quiz[round].Answer ? 'error' : 'clear') : null}`;
-              return (
-                <button key={index} className={className} onClick={() => _onClickAnswer(option)}>
-                  {option}
-                </button>
-              );
-            }
+        </div>
+        <div className="answer__box">
+          {quiz[round].type === 'multiple' &&
+            quiz[round].Options!.map((option, index) =>
+              //button은 2줄까지 허용, 높이 고정
+              {
+                const className = `${option === submittedAnswer ? (option !== quiz[round].Answer ? 'error' : 'clear') : null}`;
+                return (
+                  <button key={index} className={className} onClick={() => _onClickAnswer(option)}>
+                    {option}
+                  </button>
+                );
+              }
+            )}
+
+          {quiz[round].type === 'objective' && <button onClick={() => _onClickAnswer(quiz[round].Answer)}>제출</button>}
+
+          {quiz[round].type === 'ox' && (
+            <>
+              <button onClick={() => _onClickAnswer('O')}>O</button>
+              <button onClick={() => _onClickAnswer('X')}>X</button>
+            </>
           )}
-
-        {quiz[round].type === 'objective' && <button onClick={() => _onClickAnswer(quiz[round].Answer)}>제출</button>}
-
-        {quiz[round].type === 'ox' && (
-          <>
-            <button onClick={() => _onClickAnswer('O')}>O</button>
-            <button onClick={() => _onClickAnswer('X')}>X</button>
-          </>
-        )}
+        </div>
       </div>
       {showClearModal && <ClearModal />}
       {showAllClearModal && <AllClearModal />}
@@ -136,25 +136,44 @@ const shake = keyframes`
 
 const BeelingQuizStyle = styled.div`
   position: relative;
-  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  width: 100%;
   border-radius: 12px;
+  overflow-y: hidden;
   ${BoxShadow}
-  .round {
+  h2 {
+    display: block;
     width: 100%;
+    padding-bottom: 4px;
+    margin-bottom: 0px;
+    box-shadow: 0 10px 10px -5px #fff;
+    z-index: 10;
+  }
+  .round {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
     text-align: right;
   }
   .quiz__box {
-    padding: 10px;
+    position: relative;
     width: 100%;
-    p {
+    overflow-y: scroll;
+    /* background-color: pink; */
+    .question {
+      padding: 8px 16px 8px;
       font-size: 20px;
       text-align: left;
       line-height: 32px;
+      z-index: 100;
       span {
         display: inline-block;
         font-size: 24px;
@@ -162,38 +181,43 @@ const BeelingQuizStyle = styled.div`
         color: ${COLOR.green};
       }
     }
-  }
-  .answer__box {
-    margin-top: 12px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    button {
-      width: 100%;
-      height: 40px;
+    .answer__box {
       padding: 10px;
-      font-size: 16px;
-      line-height: 20px;
-      border: none;
-      border-radius: 8px;
-      color: ${COLOR.black};
-      background-color: ${COLOR.green};
-      transition: 0.2s;
-      ${BoxShadow}
+      margin-top: 8px;
+      width: 100%;
+      display: flex;
 
-      :active {
-        transform: scale(0.96);
-      }
-      :focus {
-        outline: none;
-      }
-      &.error {
-        background-color: ${COLOR.red};
-        animation: ${shake} 0.4s;
-      }
-      &.clear {
-        background-color: ${COLOR.gold};
+      flex-direction: column;
+      gap: 12px;
+      button {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 20px;
+        border: none;
+        border-radius: 8px;
+        color: ${COLOR.black};
+        background-color: ${COLOR.green};
+        transition: 0.2s;
+        ${BoxShadow}
+        :hover {
+          cursor: pointer;
+          transform: scale(1.02);
+        }
+        :active {
+          transform: scale(0.98);
+        }
+        :focus {
+          outline: none;
+        }
+        &.error {
+          background-color: ${COLOR.red};
+          animation: ${shake} 0.4s;
+        }
+        &.clear {
+          background-color: ${COLOR.gold};
+        }
       }
     }
   }

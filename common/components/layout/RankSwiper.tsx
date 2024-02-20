@@ -54,10 +54,13 @@ const upSlide = keyframes`
 
 const RankSwiperStyle = styled.div<{ rank: number }>`
   width: 100%;
+  margin-left: 12px;
+  padding-right: 12px;
   min-height: 45px;
   max-height: 45px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   overflow: hidden;
   .block {
     animation: ${upSlide} 2s ease-in-out infinite;

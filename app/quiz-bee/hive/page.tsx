@@ -4,7 +4,7 @@ import { signOut, useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import BeelingQuiz from './_client/BeelingQuiz';
 import BuzzRecord from './_client/BuzzRecord';
-import RankSwiper from './_client/RankSwiper';
+import RankSwiper from '../../../common/components/layout/RankSwiper';
 
 export default function HivePage() {
   const session = useSession();
@@ -17,8 +17,9 @@ export default function HivePage() {
   return (
     <HivePageStyle>
       {/* //layout으로 뺄까 ?..ㄱ */}
-      <RankSwiper />
+      {/* <RankSwiper /> */}
       <BuzzRecord />
+
       <BeelingQuiz />
     </HivePageStyle>
   );
@@ -29,8 +30,8 @@ const HivePageStyle = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
+  align-items: flex-start;
+  gap: 12px;
 `;
 
 // navigation 은 홈에서만 보이도록 할까 ?
