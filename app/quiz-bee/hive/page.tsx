@@ -2,8 +2,8 @@
 import styled from '@emotion/styled';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
-import BeelingQuiz from './_client/BeelingQuiz';
-import BuzzRecord from './_client/BuzzRecord';
+import BeelingQuiz from './_component/BeelingQuiz';
+import BuzzRecord from './_component/BuzzRecord';
 import RankSwiper from '../../../common/components/layout/RankSwiper';
 
 export default function HivePage() {

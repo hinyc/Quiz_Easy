@@ -22,7 +22,6 @@ const QuizBeeLayoutStyle = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  overflow-y: scroll;
   .children {
     height: calc(100% - 135px);
     padding: 10px 16px 16px;

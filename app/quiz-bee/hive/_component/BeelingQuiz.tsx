@@ -166,8 +166,6 @@ const BeelingQuizStyle = styled.div`
   .quiz__box {
     position: relative;
     width: 100%;
-    overflow-y: scroll;
-    /* background-color: pink; */
     .question {
       padding: 8px 16px 8px;
       font-size: 20px;
