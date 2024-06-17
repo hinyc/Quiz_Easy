@@ -1,10 +1,14 @@
-'use client';
-import Header from '@/common/components/layout/Header';
-import Nav from '@/common/components/layout/Nav';
-import styled from '@emotion/styled';
-import React from 'react';
+"use client";
+import Header from "@/common/components/layout/Header";
+import Nav from "@/common/components/layout/Nav";
+import styled from "@emotion/styled";
+import React from "react";
 
-export default function QuizBeeLayout({ children }: { children: React.ReactNode }) {
+export default function QuizBeeLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <QuizBeeLayoutStyle>
       <Header />
@@ -21,7 +25,7 @@ const QuizBeeLayoutStyle = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  background-color: pink;
+  /* background-color: pink; */
   .children {
     height: calc(100% - 135px);
     margin-bottom: 60px;
