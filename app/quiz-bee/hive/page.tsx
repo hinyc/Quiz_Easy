@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import BeelingQuiz from './_component/BeelingQuiz';
 import BuzzRecord from './_component/BuzzRecord';
 import RankSwiper from '../../../common/components/layout/RankSwiper';
+import CustomStyledComponent from '@/app/common/components/style';
 
 export default function HivePage() {
   const session = useSession();
@@ -15,24 +16,18 @@ export default function HivePage() {
   }, [session]);
 
   return (
-    <HivePageStyle>
+    <CustomStyledComponent.PageStyle>
+      <h1>
+        <span>퀴즈비</span> 하이브
+      </h1>
       {/* //layout으로 뺄까 ?..ㄱ */}
       {/* <RankSwiper /> */}
       <BuzzRecord />
 
       <BeelingQuiz />
-    </HivePageStyle>
+    </CustomStyledComponent.PageStyle>
   );
 }
-
-const HivePageStyle = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-`;
 
 // navigation 은 홈에서만 보이도록 할까 ?
 // navigation 를 열고 닫을 수 있도록 할까 ?

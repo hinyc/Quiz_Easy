@@ -39,7 +39,7 @@ const NavButtonList = [
 
 export const NavStyled = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

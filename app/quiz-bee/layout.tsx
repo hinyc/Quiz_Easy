@@ -9,7 +9,6 @@ export default function QuizBeeLayout({ children }: { children: React.ReactNode 
     <QuizBeeLayoutStyle>
       <Header />
       <div className="children">{children}</div>
-
       <Nav />
     </QuizBeeLayoutStyle>
   );
@@ -22,9 +21,11 @@ const QuizBeeLayoutStyle = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+  background-color: pink;
   .children {
     height: calc(100% - 135px);
-    padding: 10px 16px 16px;
     margin-bottom: 60px;
+    padding-bottom: 16px;
+    overflow: hidden;
   }
 `;

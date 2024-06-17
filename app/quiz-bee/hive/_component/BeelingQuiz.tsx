@@ -65,36 +65,38 @@ export default function BeelingQuiz() {
 
   return (
     <BeelingQuizStyle>
-      <h2>BelingQuiz</h2>
-      <div className="round">
-        {round + 1}/{quiz.length}
-      </div>
-      <div className="quiz__box">
-        <div className="question">
-          <span>Q.</span> {quiz[round].Quiz}
+      <div className="container">
+        <h2>BelingQuiz</h2>
+        <div className="round">
+          {round + 1}/{quiz.length}
         </div>
-        <div className="answer__box">
-          {quiz[round].type === 'multiple' &&
-            quiz[round].Options!.map((option, index) =>
-              //button은 2줄까지 허용, 높이 고정
-              {
-                const className = `${option === submittedAnswer ? (option !== quiz[round].Answer ? 'error' : 'clear') : null}`;
-                return (
-                  <button key={index} className={className} onClick={() => _onClickAnswer(option)}>
-                    {option}
-                  </button>
-                );
-              }
+        <div className="quiz__box">
+          <div className="question">
+            <span>Q.</span> {quiz[round].Quiz}
+          </div>
+          <div className="answer__box">
+            {quiz[round].type === 'multiple' &&
+              quiz[round].Options!.map((option, index) =>
+                //button은 2줄까지 허용, 높이 고정
+                {
+                  const className = `${option === submittedAnswer ? (option !== quiz[round].Answer ? 'error' : 'clear') : null}`;
+                  return (
+                    <button key={index} className={className} onClick={() => _onClickAnswer(option)}>
+                      {option}
+                    </button>
+                  );
+                }
+              )}
+
+            {quiz[round].type === 'objective' && <button onClick={() => _onClickAnswer(quiz[round].Answer)}>제출</button>}
+
+            {quiz[round].type === 'ox' && (
+              <>
+                <button onClick={() => _onClickAnswer('O')}>O</button>
+                <button onClick={() => _onClickAnswer('X')}>X</button>
+              </>
             )}
-
-          {quiz[round].type === 'objective' && <button onClick={() => _onClickAnswer(quiz[round].Answer)}>제출</button>}
-
-          {quiz[round].type === 'ox' && (
-            <>
-              <button onClick={() => _onClickAnswer('O')}>O</button>
-              <button onClick={() => _onClickAnswer('X')}>X</button>
-            </>
-          )}
+          </div>
         </div>
       </div>
       {showClearModal && <ClearModal />}
@@ -135,86 +137,90 @@ const shake = keyframes`
 `;
 
 const BeelingQuizStyle = styled.div`
-  position: relative;
   width: 100%;
   height: 100%;
   min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
-  border-radius: 12px;
-  overflow-y: hidden;
-  ${BoxShadow}
-  h2 {
-    display: block;
-    width: 100%;
-    padding-bottom: 4px;
-    margin-bottom: 0px;
-    box-shadow: 0 10px 10px -5px #fff;
-    z-index: 10;
-  }
-  .round {
-    position: absolute;
-    top: 24px;
-    right: 12px;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: right;
-  }
-  .quiz__box {
+  padding: 12px 16px;
+  .container {
     position: relative;
+    border-radius: 12px;
     width: 100%;
-    .question {
-      padding: 8px 16px 8px;
-      font-size: 20px;
-      text-align: left;
-      line-height: 32px;
-      z-index: 100;
-      span {
-        display: inline-block;
-        font-size: 24px;
-        font-weight: 700;
-        color: ${COLOR.green};
-      }
-    }
-    .answer__box {
-      padding: 10px;
-      margin-top: 8px;
+    height: 100%;
+    overflow-y: hidden;
+    ${BoxShadow}
+    h2 {
+      display: block;
       width: 100%;
-      display: flex;
-
-      flex-direction: column;
-      gap: 12px;
-      button {
-        width: 100%;
-        height: 40px;
+      padding: 12px;
+      margin: 0;
+      box-shadow: 0 10px 10px -5px #fff;
+      z-index: 10;
+    }
+    .round {
+      position: absolute;
+      top: 20px;
+      color: ${COLOR.orange};
+      right: 12px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: right;
+    }
+    .quiz__box {
+      position: relative;
+      width: 100%;
+      .question {
+        padding: 8px 16px 8px;
+        font-size: 20px;
+        text-align: left;
+        line-height: 32px;
+        z-index: 100;
+        span {
+          display: inline-block;
+          font-size: 24px;
+          font-weight: 700;
+          color: ${COLOR.green};
+        }
+      }
+      .answer__box {
         padding: 10px;
-        font-size: 16px;
-        line-height: 20px;
-        border: none;
-        border-radius: 8px;
-        color: ${COLOR.black};
-        background-color: ${COLOR.green};
-        transition: 0.2s;
-        ${BoxShadow}
-        :hover {
-          cursor: pointer;
-          transform: scale(1.02);
-        }
-        :active {
-          transform: scale(0.98);
-        }
-        :focus {
-          outline: none;
-        }
-        &.error {
-          background-color: ${COLOR.red};
-          animation: ${shake} 0.4s;
-        }
-        &.clear {
-          background-color: ${COLOR.gold};
+        width: 100%;
+        display: flex;
+
+        flex-direction: column;
+        gap: 12px;
+        button {
+          width: 100%;
+          height: 40px;
+          padding: 10px;
+          font-size: 16px;
+          line-height: 20px;
+          border: none;
+          border-radius: 8px;
+          color: ${COLOR.black};
+          background-color: ${COLOR.green};
+          transition: 0.2s;
+          ${BoxShadow}
+          :hover {
+            cursor: pointer;
+            transform: scale(1.02);
+          }
+          :active {
+            transform: scale(0.98);
+          }
+          :focus {
+            outline: none;
+          }
+          &.error {
+            background-color: ${COLOR.red};
+            animation: ${shake} 0.4s;
+          }
+          &.clear {
+            background-color: ${COLOR.gold};
+          }
         }
       }
     }
