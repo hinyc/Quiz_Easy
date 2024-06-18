@@ -25,7 +25,6 @@ const QuizBeeLayoutStyle = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  /* background-color: pink; */
   .children {
     height: calc(100% - 135px);
     margin-bottom: 60px;

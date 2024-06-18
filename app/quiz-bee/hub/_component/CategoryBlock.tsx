@@ -1,8 +1,10 @@
-import { categoryType } from '@/type';
-import { css } from '@emotion/css';
-import React from 'react';
+import { categoryType } from "@/type";
+import { css } from "@emotion/css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 
-export default function Block({ id, category }: categoryType) {
+export default function CategoryBlock({ id, category, path }: categoryType) {
   const _onClick = () => {
     console.log(id, category);
   };
@@ -42,7 +44,7 @@ export default function Block({ id, category }: categoryType) {
         `}
       `}
     >
-      <span>{category}</span>
+      <Link href={`/quiz-bee/hub/${path}`}>{category}</Link>
     </div>
   );
 }
