@@ -15,7 +15,7 @@ export default function HivePage() {
         className={css`
           display: flex;
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 15px;
           height: 100%;
           padding: 16px;
           overflow: auto;

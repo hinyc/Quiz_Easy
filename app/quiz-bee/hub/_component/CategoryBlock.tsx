@@ -10,7 +10,8 @@ export default function CategoryBlock({ id, category, path }: categoryType) {
   };
 
   return (
-    <div
+    <Link
+      href={`/quiz-bee/hub/${path}`}
       className={css`
         background-color: #fff;
         width: 25%;
@@ -35,16 +36,18 @@ export default function CategoryBlock({ id, category, path }: categoryType) {
         css`
           font-size: 18px;
           font-weight: 500;
+          letter-spacing: -1px;
         `}
 
         ${category.length > 7 &&
         css`
-          font-size: 14px;
-          font-weight: 700;
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -2px;
         `}
       `}
     >
-      <Link href={`/quiz-bee/hub/${path}`}>{category}</Link>
-    </div>
+      <div>{category}</div>
+    </Link>
   );
 }
