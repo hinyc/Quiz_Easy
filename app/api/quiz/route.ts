@@ -6,5 +6,5 @@ const GET = async (req: NextRequest) => {
 
   return new Response("Hello, world!!!");
 };
-
+//
 export { GET };
